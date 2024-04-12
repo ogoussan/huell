@@ -1,0 +1,2 @@
+# huell
+AI powered assistant
