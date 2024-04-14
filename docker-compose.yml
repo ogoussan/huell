@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  neo4j:
+    image: ${NEO4J_DOCKER_IMAGE}
+    container_name: knowledge-graph
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    restart: unless-stopped
+    environment:
+      - NEO4J_AUTH
+      - NEO4JLABS_PLUGINS=["graph-data-science", "apoc"]
+    volumes:
+      - ./neo4j.conf:/conf/neo4j.conf # This is the main configuration file.
+      - ./data/server1:/data
+      - ./logs/server1:/logs
+      - ./conf/server1:/conf
+      - ./import/server1:/import
+  mongo:
+    image: mongo:latest
+    container_name: chat-db
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=huell-chat-db
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
