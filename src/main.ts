@@ -10,7 +10,10 @@ async function bootstrap() {
 
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  app.enableCors();
+  app.enableCors({
+    origin: true, // or specify your allowed origins explicitly here
+    credentials: true, // allow credentials
+  });
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new MongooseExceptionFilter());
 
