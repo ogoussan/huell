@@ -1,7 +1,20 @@
 import {Types} from "mongoose";
+import {ChatMessageType} from "../enums";
 
 export interface Chat extends Document{
-  name: string;
+  sessionId: string;
+  messages: ChatMessage[];
+}
+
+export interface ChatMessage extends Document{
+  type: ChatMessageType;
+  data: {
+    content: string;
+  }
+}
+
+export interface UserChatMessage extends Document{
+  content: string;
 }
 
 export interface Document {

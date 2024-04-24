@@ -1,4 +1,4 @@
-export enum MessageType {
-  USER = 'user',
-  ASSISTANT = 'assistant',
+export enum ChatMessageType {
+  AI = 'ai',
+  HUMAN = 'human'
 }

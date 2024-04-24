@@ -1,11 +1,14 @@
 import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
 import {DocumentEntity} from "../../database/documentEntity";
-import {Chat} from "../../interfaces";
+import {Chat, ChatMessage} from "../../interfaces";
 
 @Schema({ collection: 'chat' })
 export class ChatEntity extends DocumentEntity implements Chat {
   @Prop()
-  public name: string;
+  messages: ChatMessage[];
+
+  @Prop()
+  sessionId: string;
 }
 
 export const ChatSchema = SchemaFactory.createForClass(ChatEntity);
