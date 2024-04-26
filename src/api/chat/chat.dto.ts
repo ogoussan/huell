@@ -8,6 +8,10 @@ import {ChatMessageType} from "../../enums";
 export class ChatDto extends DocumentDto implements Chat {
   @IsString()
   @ApiProperty()
+  name: string;
+
+  @IsString()
+  @ApiProperty()
   sessionId: string;
 
   @IsArray()

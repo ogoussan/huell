@@ -5,6 +5,9 @@ import {Chat, ChatMessage} from "../../interfaces";
 @Schema({ collection: 'chat' })
 export class ChatEntity extends DocumentEntity implements Chat {
   @Prop()
+  name: string;
+
+  @Prop()
   messages: ChatMessage[];
 
   @Prop()
